@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View,Image } from 'react-native';
 
 class App extends Component {
   render() {
@@ -8,6 +8,8 @@ class App extends Component {
         <Text style={styles.note}>
           Gordon Rawe is now writing code in London Canada.
         </Text>
+        <Image source={{uri: 'ic_launcher'}} style={{width: 40, height: 40}} />
+        <Image source={require('./img/back_icon.png') }  style={{width: 40, height: 40}} />
       </View>
     );
   }
@@ -20,7 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   note: {
-    fontSize: 20
+    fontSize: 20,
+    textAlign: 'center'
   }
 });
 
