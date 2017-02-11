@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('react-native-module', () => Routing);
+AppRegistry.registerComponent('router', () => Routing);

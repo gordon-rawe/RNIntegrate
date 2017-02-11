@@ -8,4 +8,5 @@
  *    ToastAndroid.LONG
  */
 import { NativeModules } from 'react-native';
-module.exports = NativeModules.ToastAndroid;
+module.exports.ToastAndroid = NativeModules.ToastAndroid;
+module.exports.IntentAndroid = NativeModules.IntentAndroid;

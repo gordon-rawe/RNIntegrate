@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { IntentAndroid,ToastAndroid } from '../react-modules/AndroidModules';
 
 class About extends Component {
+
+  handleBack(){
+    this.props.navigator.pop();
+    IntentAndroid.canOpenURL('com.gordon.rawe.rnintegrate.NativeActivity' , (supported) => {
+      if(!supported){
+        ToastAndroid.show("open url failed",ToastAndroid.SHORT);
+      }else{
+        IntentAndroid.openURL('com.gordon.rawe.rnintegrate.NativeActivity');
+      }
+    });
+  }
+
   render(){
     return (
       <View style={styles.container}>
         <Text style={styles.content}>{this.props.message}</Text>
-        <TouchableHighlight underlayColor="red" onPress={() => this.props.navigator.pop()} >
+        <TouchableHighlight underlayColor="#33884995" onPress={ () =>  this.handleBack() } >
           <Text style={styles.normal}>Dismiss this page</Text>
         </TouchableHighlight>
       </View>
