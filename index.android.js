@@ -13,7 +13,7 @@ export default class Routing extends Component {
     if(route.name === 'homepage'){
       return <Home navigator={navigator} />
     }else if(route.name === 'aboutpage'){
-      return <About navigator={navigator} />
+      return <About navigator={navigator} message={route.message}/>
     }
   }
 

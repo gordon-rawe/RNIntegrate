@@ -7,15 +7,15 @@ class Home extends Component {
     this.navigate = this.navigate.bind(this);
   }
 
-  navigate(name){
-    this.props.navigator.push({name});
+  navigate(name,message){
+    this.props.navigator.push({name,message});
   }
-  
+
   render(){
     return (
       <View style={styles.container}>
         <Text style={styles.content}>Home page</Text>
-        <TouchableHighlight underlayColor="red" onPress={() => this.navigate('aboutpage')}>
+        <TouchableHighlight underlayColor="red" onPress={() => this.navigate('aboutpage','Hello Gordon! ')}>
           <Text style={styles.normal}>Go to about page</Text>
         </TouchableHighlight>
       </View>
