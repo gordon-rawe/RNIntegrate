@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View,Image,TouchableHighlight } from 'react-native';
-import ToastAndroid from './react-modules/androidtoast';
+import { AppRegistry, StyleSheet, Text, View,Navigator } from 'react-native';
+import Home from './components/Home';
+import About from './components/About';
 
-class App extends Component {
-  say(){
-    ToastAndroid.show('Awesome', ToastAndroid.SHORT);
+export default class Routing extends Component {
+  constructor(){
+    super();
+    this.renderScene = this.renderScene.bind(this);
   }
+
+  renderScene(route,navigator){
+    if(route.name === 'homepage'){
+      return <Home navigator={navigator} />
+    }else if(route.name === 'aboutpage'){
+      return <About navigator={navigator} />
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableHighlight  onPress={this.say}>
-           <Text style={styles.note}>
-              Gordon Rawe is now writing code in London Canada.
-           </Text>
-        </TouchableHighlight>
-        <Image source={{uri: 'ic_launcher'}} style={{width: 40, height: 40}} />
-        <Image source={require('./resources/images/back_icon.png') }  style={{width: 80, height: 80}} >
-            <Text>Shit</Text>
-        </Image>
-      </View>
+      <Navigator
+        initialRoute={{name:'homepage'}}
+        renderScene={this.renderScene}
+      />
     );
   }
 }
@@ -27,12 +31,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  note: {
-    fontSize: 20,
-    textAlign: 'center'
+    alignItems: 'center'
   }
 });
 
-AppRegistry.registerComponent('react-native-module', () => App);
+AppRegistry.registerComponent('react-native-module', () => Routing);
